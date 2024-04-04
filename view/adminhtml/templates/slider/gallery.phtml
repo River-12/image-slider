@@ -1,0 +1,70 @@
+<?php
+/** @var $block \Riverstone\ImageSlider\Block\Adminhtml\Slider\Form\Gallery\Content */
+$element = $block->getElement();
+$elementNameEscaped = $escaper->escapeHtmlAttr($element->getName()) . '[images]';
+$formNameEscaped = $escaper->escapeHtmlAttr($block->getFormName());
+?>
+<div id="<?= $escaper->escapeHtmlAttr($block->getHtmlId()) ?>"
+     class="gallery"
+     data-mage-init='{"sliderImages":{}}'
+     data-parent-component="<?= $escaper->escapeHtmlAttr($block->getData('config/parentComponent')) ?>"
+     data-images="<?= $escaper->escapeHtmlAttr($block->getImagesJson()) ?>"
+>
+    <?php if (!$element->getReadonly()): ?>
+        <div class="image image-placeholder">
+            <?= $block->getUploaderHtml(); ?>
+            <div class="slider-image-wrapper">
+                <p class="image-placeholder-text">
+                    <?= $escaper->escapeHtml(__('Browse to find or drag image here')); ?>
+                </p>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <script id="<?= $escaper->escapeHtmlAttr($block->getHtmlId()) ?>-template"
+            data-template="image"
+            type="text/x-magento-template">
+        <div class="image item"
+             data-role="image">
+            <input type="hidden"
+                   name="<?= /* @noEscape */ $elementNameEscaped ?>[<%- data.image_id %>][temp_path]"
+                   value="<%- data.temp_path %>"
+                   data-form-part="<?= /* @noEscape */ $formNameEscaped ?>"/>
+            <input type="hidden"
+                   name="<?= /* @noEscape */ $elementNameEscaped ?>[<%- data.image_id %>][image_id]"
+                   value="<%- data.image_id %>"
+                   data-form-part="<?= /* @noEscape */ $formNameEscaped ?>"/>
+            <input type="hidden"
+                   name="<?= /* @noEscape */ $elementNameEscaped ?>[<%- data.image_id %>][is_new]"
+                   value="<%- data.is_new %>"
+                   data-form-part="<?= /* @noEscape */ $formNameEscaped ?>"/>
+            <input type="hidden"
+                   name="<?= /* @noEscape */ $elementNameEscaped ?>[<%- data.image_id %>][is_removed]"
+                   value="" class="is-removed"
+                   data-form-part="<?= /* @noEscape */ $formNameEscaped ?>"/>
+
+            <div class="slider-image-wrapper">
+                <img class="slider-image" data-role="image-element" src="<%- data.url %>" alt="<%- data.name %>"/>
+
+                <div class="actions">
+                    <div class="tooltip">
+                        <button type="button" class="action-remove" data-role="delete-button"
+                                title="<?= $escaper->escapeHtmlAttr(__('Delete image')); ?>">
+                            <span><?= $escaper->escapeHtml(__('Delete image')); ?></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-description">
+                <div class="item-title" data-role="img-title"><%- data.name %></div>
+                <div class="item-size">
+                    <span data-role="image-dimens"></span>, <span data-role="image-size"><%- data.sizeLabel %></span>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>
+<script>
+    jQuery('body').trigger('contentUpdated');
+</script>

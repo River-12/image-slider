@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="riverstone_sliders" engine="innodb" resource="default" comment="Riverstone Sliders">
+        <column xsi:type="int" name="id" padding="10" identity="true" nullable="false" comment="ID"/>
+        <column xsi:type="varchar" name="name" length="255" nullable="false" comment="Name"/>
+        <column xsi:type="varchar" name="identifier" length="255" nullable="false" comment="Identifier"/>
+        <column xsi:type="boolean" name="status" nullable="false" comment="Status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="RIVERSTONE_SLIDERS_IDENTIFIER" indexType="fulltext">
+            <column name="identifier"/>
+        </index>
+    </table>
+    <table name="riverstone_slider_images" engine="innodb" resource="default" comment="Riverstone Slider Images">
+        <column xsi:type="int" name="id" padding="10" identity="true" nullable="false" comment="ID"/>
+        <column xsi:type="int" name="slider_id" padding="10" nullable="false" comment="Slider ID"/>
+        <column xsi:type="varchar" name="image_path" nullable="false" comment="Image Path"/>
+        <constraint xsi:type="foreign" referenceId="RIVERSTONE_SLIDER_IMAGES_SLIDER_ID_RIVERSTONE_SLIDERS_ID" table="riverstone_slider_images"
+                    column="slider_id" referenceTable="riverstone_sliders" referenceColumn="id" onDelete="CASCADE"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

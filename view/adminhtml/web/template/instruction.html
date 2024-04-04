@@ -1,0 +1,15 @@
+<ol type="1">
+    <li>
+        <b>CMS Page/Static Block</b>
+        <ul style="margin-left: 20px; list-style: none;">
+            <li><b>Method 1: </b>Click on Insert Widget icon. Inside the popup, select "Image Slider Widget" and then select the slider from the dropdown.</li>
+            <li><b>Method 2: </b>{{widget type="Riverstone\ImageSlider\Block\Widget\Slider" slider_identifier="<!--ko text: value--><!--/ko-->"}}</li>
+        </ul>
+    </li>
+    <br>
+    <li>
+        <b>Template file (.phtml)</b>
+        <br>
+        <div>&lt;?php echo $block->getLayout()->createBlock("Riverstone\ImageSlider\Block\Widget\Slider")->setSliderIdentifier("<!--ko text: value--><!--/ko-->")->toHtml();?&gt;</div>
+    </li>
+</ol>

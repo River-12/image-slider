@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Riverstone\ImageSlider\Ui\Component\Form\Slider\Modifier\Pool"
+                 type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="slider" xsi:type="array">
+                    <item name="class" xsi:type="string">
+                        Riverstone\ImageSlider\Ui\Component\Form\Slider\Modifier\Slider
+                    </item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Riverstone\ImageSlider\Model\Slider\DataProvider">
+        <arguments>
+            <argument name="pool" xsi:type="object">Riverstone\ImageSlider\Ui\Component\Form\Slider\Modifier\Pool
+            </argument>
+        </arguments>
+    </type>
+</config>

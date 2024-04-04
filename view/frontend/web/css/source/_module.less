@@ -1,0 +1,29 @@
+@import 'slick.less';
+@import 'slick-theme.less';
+.slick-slider {
+    .slick-arrow, .slick-arrow:hover, .slick-arrow:focus {
+        background: grey;
+    }
+    .slick-dots {
+        button {
+            background: grey;
+        }
+        li {
+            button:before {
+                font-size: 20px;
+            }
+        }
+        li {
+            &.slick-active {
+                button:before {
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+/* Slider */
+.slick-loading .slick-list{
+    background: #fff url('../Riverstone_ImageSlider/images/ajax-loader.gif');
+}

@@ -1,0 +1,30 @@
+<?php /** @var $block Riverstone\ImageSlider\Block\Widget\Slider; */ ?>
+<?php if ($block->isModuleEnable() && $block->getSliderStatus()): ?>
+    <?php $imageUrls = $block->getSliderImages(); ?>
+    <?php if (count($imageUrls)): ?>
+        <div class="image-slider-<?= $block->escapeHtmlAttr($block->getIdentifier()); ?>">
+            <?php foreach ($imageUrls as $url): ?>
+                <div>
+                    <img src="<?= $block->escapeUrl($url); ?>"/>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <script>
+            require([
+                'jquery',
+                'slick'
+            ], function ($) {
+                $(".image-slider-<?= $block->escapeHtmlAttr($block->getIdentifier()); ?>").slick({
+                    autoplay: true,
+                    autoplaySpeed: 1500,
+                    arrows: true,
+                    dots: true,
+                    infinite: true,
+                    pauseOnFocus: true,
+                    pauseOnHover: true,
+                    speed: 300,
+                });
+            });
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

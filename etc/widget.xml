@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Riverstone\ImageSlider\Block\Widget\Slider" id="river_image_slider">
+        <label>Image Slider Widget</label>
+        <description>This widget is responsible for rendering the sliders.</description>
+        <parameters>
+            <parameter name="slider_identifier" xsi:type="select" visible="true"
+                       source_model="Riverstone\ImageSlider\Model\Source\SliderLists">
+                <label>Slider Lists</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

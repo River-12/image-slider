@@ -1,0 +1,47 @@
+.image {
+    .slider-image-wrapper {
+        background: #ffffff;
+        border: 1px solid #cccccc;
+        box-sizing: border-box;
+        cursor: pointer;
+        height: 150px;
+        line-height: 1;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        position: relative;
+        width: 150px;
+    }
+
+    .slider-image {
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        max-height: 100%;
+        max-width: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+    &.image-placeholder {
+        .slider-image-wrapper:before {
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 20px;
+            z-index: 1;
+            -webkit-font-smoothing: antialiased;
+            font-size: 6rem;
+            line-height: inherit;
+            color: #ccc;
+            content: '\e63c';
+            font-family: 'Admin Icons';
+            vertical-align: middle;
+            display: inline-block;
+            font-weight: normal;
+            overflow: hidden;
+            speak: none;
+            text-align: center;
+        }
+    }
+}
